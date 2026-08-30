@@ -21,11 +21,21 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 |#
-(import (chicken file)
-        (chicken process-context)
-        json
-        matchable
-        srfi-1)
+(cond-expand
+  (chicken-6
+   (import (scheme base)
+           (scheme file)
+           (scheme process-context)
+           (chicken process-context)
+           json
+           matchable
+           srfi-1))
+  (chicken-5
+   (import (chicken file)
+           (chicken process-context)
+           json
+           matchable
+           srfi-1)))
 
 (define (main)
   (define filters-index-file-name (list-ref (command-line-arguments) 0))
