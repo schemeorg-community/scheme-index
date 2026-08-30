@@ -548,21 +548,21 @@ These are the same as string-trim and string-trim-right, but with a different or
     ((name . "string-span")
      (signature
        case-lambda
-       (((string? string) (procedure? pred)) (values string? string))
+       (((string? string) (procedure? pred)) (values string? string?))
        (((string? string) (procedure? pred) (integer? start))
-        (values string? string))
+        (values string? string?))
        (((string? string) (procedure? pred) (integer? start) (integer? end))
-        (values string? string)))
+        (values string? string?)))
      (subsigs (pred (lambda ((char? c)) boolean?)))
      (tags pure))
     ((name . "string-break")
      (signature
        case-lambda
-       (((string? string) (procedure? pred)) (values string? string))
+       (((string? string) (procedure? pred)) (values string? string?))
        (((string? string) (procedure? pred) (integer? start))
-        (values string? string))
+        (values string? string?))
        (((string? string) (procedure? pred) (integer? start) (integer? end))
-        (values string? string)))
+        (values string? string?)))
      (subsigs (pred (lambda ((char? c)) boolean?)))
      (tags pure)))
   (desc . "String-span splits the substring of string specified by start and end into the longest initial prefix whose elements all satisfy pred, and the remaining tail. String-break inverts the sense of the predicate: the tail commences with the first element of the input string that satisfies the predicate. (Not SRFI 13 procedures.)

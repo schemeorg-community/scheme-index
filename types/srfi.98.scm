@@ -1,5 +1,5 @@
 (((name . "getenv")
-  (signature lambda ((string? name)) (or string #f))
+  (signature lambda ((string? name)) (or string? #f))
   (tags pure)
   (desc . "Returns the value of the named environment variable as a string, or #f if the named environment variable is not found."))
  ((name . "getenv")
