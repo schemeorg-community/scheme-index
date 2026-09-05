@@ -6,7 +6,7 @@ jobs:
   validatedata:
     runs-on: ubuntu-latest
     container:
-      image: schemers/chicken:5
+      image: schemers/chicken:6
     steps:
       - uses: actions/checkout@v4
       - name: 'Validate data'
