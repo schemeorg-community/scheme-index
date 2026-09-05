@@ -40,8 +40,10 @@ SOFTWARE.
 (define (main)
   (define filters-index-file-name (list-ref (command-line-arguments) 0))
   (define types-index-file-name (list-ref (command-line-arguments) 1))
+  (define faux-types-file-name (list-ref (command-line-arguments) 2))
   (process-filters-index filters-index-file-name)
-  (process-types-index types-index-file-name))
+  (parameterize ((*faux-types* (process-faux-types faux-types-file-name)))
+      (process-types-index types-index-file-name)))
 
 (define (->string obj)
   (let ((out (open-output-string)))
@@ -55,14 +57,12 @@ SOFTWARE.
        (let ((str (symbol->string x)))
          (char=? #\? (string-ref str (- (string-length str) 1))))))
 
-(define faux-types
-  (map car
-       (with-input-from-file "types/faux-types.scm" read)))
+(define *faux-types* (make-parameter '()))
 
 (define (faux-type-symbol? x)
   (and (symbol? x)
        (or (memq x '(* undefined ...))
-           (memq x faux-types))))
+           (memq x (*faux-types*)))))
 
 (define (process-filters-index index-file-name)
   (define (assoc/assert-string key alist)
@@ -241,5 +241,18 @@ SOFTWARE.
   (match pattern
     ((p) #t)
     ((p return-type) (validate-function-return return-type))))
+
+(define (process-faux-types filename)
+  (define content (with-input-from-file filename read))
+  (unless (list? content)
+      (error "faux-type file is not an alist"))
+  (for-each
+    (lambda (e)
+      (unless (and (pair? e)
+                   (symbol? (car e))
+                   (string? (cdr e)))
+        (error (string-append "Bad faux-type entry, was " (->string e)))))
+    content)
+  (map car content))
 
 (main)

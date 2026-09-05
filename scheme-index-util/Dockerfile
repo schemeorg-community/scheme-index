@@ -4,4 +4,4 @@ COPY ./scheme-index-util /scheme-index-util
 WORKDIR /scheme-index-util
 RUN csc validatedata.scm
 WORKDIR /
-ENTRYPOINT ./scheme-index-util/validatedata filters/index.scm types/index.scm
+ENTRYPOINT ./scheme-index-util/validatedata filters/index.scm types/index.scm types/faux-types.scm
