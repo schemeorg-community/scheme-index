@@ -15,7 +15,7 @@
  (constructor-descriptor . "Record constructor descriptor specifies a record constructor (or constructor for short), that can be used to construct record values of the type specified by rtd (R6RS)")
  (endianness . "(Big, little) endianness object, as returned by endianness macro (SRFI-74)")
  (formatter . "Formatter (encapsulated formatting code) object (SRFI-159)")
- (formatter-variable "Formatting-related variables that can be overriden (SRFI-159)")
+ (formatter-variable . "Formatting-related variables that can be overriden (SRFI-159)")
  (generator-macro . "Eager comprehension macro (SRFI-42)")
  (option . "Object representing a command line option passed to the program (SRFI-37)")
  (random-source-state . "Object representing a state of the random bit source (SRFI-27)")
