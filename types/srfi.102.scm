@@ -1,5 +1,5 @@
 (((name . "procedure-arity")
-  (signature lambda ((procedure? proc)) (or integer? arity-at-least))
+  (signature lambda ((procedure? proc)) (or #f arity-at-least))
   (desc . "Produces an arity object representing the arity of proc. If this procedure produces #f, no information is available for proc."))
  ((name . "arity-at-least?")
   (signature lambda (obj) boolean?)
