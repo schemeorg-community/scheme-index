@@ -22,7 +22,6 @@
  (timer-id . "ID of the task in a certain timer (SRFI-120)")
  (time-type . "Symbol representing a certain time system, e.g. time-utc (SRFI-19)")
  (vicinity . "Descriptor for a place in the file system (SRFI-59)")
- (arity-at-least . "Opaque object representing procedure arity for variadic procedures (SRFI-102)")
  ;; SRFI-106 types
  ;; Technically, their type is unspecified.
  ;; However, any implementation of SRFI-106 is likely to just provide
