@@ -9,7 +9,7 @@
  (transformer-spec . "Object returned by macro-creating forms")
  ;; Procedure types
  (predicate . "A procedure that returns a (usually) boolean value for whether its argument has some property")
- (comparison . "A procedure that compares its two arguments, usually for ordering")
+ (comparison . "A procedure which returns truthy value if the first object precedes the second in a total order, and #f otherwise")
  (equality . "A procedure that compares its two arguments for being similar (in some sense)")
  ;; SRFI-specific types
  (computation . "A computation can be thought of as suspended code much like promises but with the difference that a computation can be executed more than once and that its results are not cached (SRFI-165)")
