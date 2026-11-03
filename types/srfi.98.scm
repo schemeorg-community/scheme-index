@@ -1,7 +1,10 @@
-(((name . "getenv")
-  (signature case-lambda
-             (((string? name)) (or string? #f))
-             (() list?))
+(((name . "get-environment-variable")
+  (signature lambda ((string? name)) (or string? #f))
   (tags pure)
-  (desc . "Returns the value of the named environment variable as a string, or #f if the named environment variable is not found.
-In the second form, returns names and values of all the environment variables as an alist.")))
+  (desc . "Many operating systems provide each running process with an environment consisting of environment variables. (This environment is not to be confused with the Scheme environments that can be passed to eval: see section 6.12.) Both the name and value of an environment variable are strings. The procedure get-environment-variable returns the value of the environment variable name, or #f if the named environment variable is not found. It may use locale information to encode the name and decode the value of the environment variable. It is an error if get-environment-variable can’t decode the value. It is also an error to mutate the resulting string."))
+ ((name . "get-environment-variables")
+  (signature lambda () list?)
+  (subsigs
+   (return (alist (string? envname) (string? value))))
+  (tags pure)
+  (desc . "Returns the names and values of all the environment variables as an alist, where the car of each entry is the name of an environment variable and the cdr is its value, both as strings. The order of the list is unspecified. It is an error to mutate any of these strings or the alist itself.")))
